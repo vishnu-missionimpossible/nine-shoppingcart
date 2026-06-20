@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import  Axios  from 'axios';
+import CartItem from './CartItem';
 
 import { faker } from "@faker-js/faker";
 import {Container, Row, Col} from "react-bootstrap";
@@ -55,7 +56,9 @@ const BuyPage = ({addToCart}) => {
             <h1 className="text-success text-center">Buy Products</h1>
             <Row>
                 {products.map((product) => (
-                    <span key={product.id}>{product.productName}</span>
+                    <Col key={product.id} md={4} className="mb-4">
+                        <CartItem product={product} addToCart={addToCart} />
+                    </Col>
                 ))} 
             </Row> 
         </Container>
