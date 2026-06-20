@@ -12,7 +12,7 @@ import {
     CardFooter
 } from "reactstrap"
 
-const Cart = ({cartItem, removeItem, addToCart}) => {
+const Cart = ({cartItem, removeItem, buyNow}) => {
     let amount = 0;
 
     cartItem.forEach(item => {
@@ -49,7 +49,7 @@ const Cart = ({cartItem, removeItem, addToCart}) => {
                                     Your amount for {cartItem.length} product(s) is ${amount.toFixed(2)}
                                 </CardBody>
                                 <CardFooter>
-                                    <Button color="success" onClick={() => addToCart(cartItem)}>Checkout</Button>
+                                    <Button color="success" onClick={() => buyNow(cartItem)}>Checkout</Button>
                                 </CardFooter>
                             </Card>
                         ) : (
