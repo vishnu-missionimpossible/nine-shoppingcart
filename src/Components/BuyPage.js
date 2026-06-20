@@ -20,7 +20,7 @@ const BuyPage = ({addToCart}) => {
                     smallImage: photo.src.small,
                     tinyImage: photo.src.tiny,
                     productName: faker.commerce.productName(),
-                    productPrice: faker.commerce.price(),
+                    productPrice: parseFloat(faker.commerce.price()),
                     id: faker.string.uuid(),
                 }));
 
