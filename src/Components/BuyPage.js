@@ -21,7 +21,7 @@ const BuyPage = ({addToCart}) => {
                     tinyImage: photo.src.tiny,
                     productName: faker.commerce.productName(),
                     productPrice: faker.commerce.price(),
-                    id: faker.random.uuid(),
+                    id: faker.string.uuid(),
                 }));
 
                 setProducts(allProducts);
