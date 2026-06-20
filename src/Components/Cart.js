@@ -12,7 +12,7 @@ import {
     CardFooter
 } from "reactstrap"
 
-const Cart = ({cartItem, removeItem, buyNow}) => {
+const Cart = ({cartItem, removeFromCart, buyNow}) => {
     let amount = 0;
 
     cartItem.forEach(item => {
@@ -32,7 +32,7 @@ const Cart = ({cartItem, removeItem, buyNow}) => {
                                 <p>${item.productPrice.toFixed(2)}</p>
                             </Col>
                             <Col md={3}>
-                                <Button color="danger" onClick={() => removeItem(item.id)}>Remove</Button>
+                                <Button color="danger" onClick={() => removeFromCart(item)}>Remove</Button>
                             </Col>
                         </Row>
                     </ListGroupItem>

@@ -43,7 +43,7 @@ function App() {
           <BuyPage addToCart={addToCart} />
         </Col>
         <Col md={4}>
-          <Cart cartItem={cartItem} removeItem={removeFromCart} buyNow={buyNow} />
+          <Cart cartItem={cartItem} removeFromCart={removeFromCart} buyNow={buyNow} />
         </Col>
       </Row>
     </Container>
