@@ -9,9 +9,9 @@ import 'react-toastify/dist/ReactToastify.css'; // Don't forget the styles!
 
 const apiKey = "ec7545b22bb7a560c021812f0d838e824bc89ccfb491e320407c2d594db38006";
 
-const url = "https://jsonhosting.com/api/json/17d784d0";
+const url = "https://jsonhosting.com/api/json/17d784d0/raw";
 
-const localURL = "https://jsonhosting.com/api/json/17d784d0";
+const localURL = "https://jsonhosting.com/api/json/17d784d0/raw";
 
 const BuyPage = ({addToCart}) => {
 
