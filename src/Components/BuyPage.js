@@ -31,9 +31,8 @@ const BuyPage = ({addToCart}) => {
     const fechProducts = async () => {
         const {data} = await Axios.get(localURL);
    
-    const photos = data.photos;
 
-    const allProducts = photos.map((photo) => ({
+    const allProducts = data.photos.map((photo) => ({
         smallImage: photo.src.small,
         tinyImage: photo.src.tiny,
         productName: faker.commerce.productName(),
