@@ -30,33 +30,40 @@ const BuyPage = ({addToCart}) => {
 
     // localURL without API Key
     const fechProducts = async () => {
-        const {data} = await Axios.get(localURL);
+        try {
+            const {data} = await Axios.get(localURL);
 
-        //Parsing start
-    // Assuming 'apiResponse' is the raw text you received from the URL
-    const firstParse = JSON.parse(data);
-    console.log(firstParse.id); // "17d784d0"
+            //Parsing start
+            // Assuming 'data' is the raw text you received from the URL
+            const firstParse = JSON.parse(data);
+            console.log(firstParse.id); // "17d784d0"
 
-    // The 'content' is a string. Parse it again to get the real data.
-    try {
-        const actualData = JSON.parse(firstParse.content);
-        console.log(actualData.total_results); // 2735
-        console.log(actualData.photos[0].photographer); // "JÉSHOOTS"
-    } catch (error) {
-        console.error("Failed to parse the content string:", error);
-    }
-    //parsing end
-   
+            // The 'content' is a string. Parse it again to get the real data.
+            const actualData = JSON.parse(firstParse.content);
+            console.log(actualData.total_results); // 2735
+            console.log(actualData.photos[0].photographer); // "JÉSHOOTS"
+            //parsing end
+           
 
-    const allProducts = data.photos.map((photo) => ({
-        smallImage: photo.src.small,
-        tinyImage: photo.src.tiny,
-        productName: faker.commerce.productName(),
-        productPrice: faker.commerce.price(),
-        id: faker.random.uuid(),
-    }))
+            // Check if actualData and actualData.photos exist before mapping
+            if (actualData && actualData.photos && Array.isArray(actualData.photos)) {
+                const allProducts = actualData.photos.map((photo) => ({
+                    smallImage: photo.src.small,
+                    tinyImage: photo.src.tiny,
+                    productName: faker.commerce.productName(),
+                    productPrice: faker.commerce.price(),
+                    id: faker.random.uuid(),
+                }));
 
-    setProducts(allProducts);
+                setProducts(allProducts);
+            } else {
+                console.error("Unexpected data structure:", actualData);
+                toast.error("Failed to load products");
+            }
+        } catch (error) {
+            console.error("Error fetching or parsing products:", error);
+            toast.error("Error fetching products");
+        }
     }; 
     
 
