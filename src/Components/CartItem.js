@@ -9,7 +9,7 @@ import {
     Button
 } from "reactstrap"
 
-const CartItem = ({product, addInCart}) => {
+const CartItem = ({product, addToCart}) => {
     return (
         <Card className="mt-2 mb-1">
             <CardImg 
@@ -21,7 +21,7 @@ const CartItem = ({product, addInCart}) => {
             <CardBody className="text-center">
                 <CardTitle tag="h5">{product.productName}</CardTitle>
                 <CardSubtitle tag="h6" className="mb-2 text-muted">${product.productPrice}</CardSubtitle>
-                <Button color="primary" onClick={() => addInCart(product)}>Add to Cart</Button>
+                <Button color="primary" onClick={() => addToCart(product)}>Add to Cart</Button>
             </CardBody>
         </Card>
     );
