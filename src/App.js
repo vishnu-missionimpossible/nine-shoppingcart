@@ -19,6 +19,7 @@ function App() {
     const isAlreadyAdded = cartItem.findIndex((i) => i.id === item.id);
     if (isAlreadyAdded !== -1) {
       toast.error("Item already added to cart");
+      return;
     }
     setCartItem([...cartItem, item]);
   };
