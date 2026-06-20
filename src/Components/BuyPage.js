@@ -7,11 +7,11 @@ import {Container, Row, Col} from "react-bootstrap";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Don't forget the styles!
 
-const apiKey = "85d0877cac20e1aa5bf72180064cb3ad849eea85e9131d0e6db73fed083bc271";
+const apiKey = "ec7545b22bb7a560c021812f0d838e824bc89ccfb491e320407c2d594db38006";
 
-const url = "https://jsonhosting.com/api/json/81379a94/raw";
+const url = "https://jsonhosting.com/api/json/17d784d0";
 
-const localURL = "https://jsonhosting.com/api/json/81379a94/raw";
+const localURL = "https://jsonhosting.com/api/json/17d784d0";
 
 const BuyPage = ({addToCart}) => {
 
@@ -26,11 +26,26 @@ const BuyPage = ({addToCart}) => {
     //     });
     //     setProducts(data);
     // }
-
+    
 
     // localURL without API Key
     const fechProducts = async () => {
         const {data} = await Axios.get(localURL);
+
+        //Parsing start
+    // Assuming 'apiResponse' is the raw text you received from the URL
+    const firstParse = JSON.parse(data);
+    console.log(firstParse.id); // "17d784d0"
+
+    // The 'content' is a string. Parse it again to get the real data.
+    try {
+        const actualData = JSON.parse(firstParse.content);
+        console.log(actualData.total_results); // 2735
+        console.log(actualData.photos[0].photographer); // "JÉSHOOTS"
+    } catch (error) {
+        console.error("Failed to parse the content string:", error);
+    }
+    //parsing end
    
 
     const allProducts = data.photos.map((photo) => ({
